@@ -17,6 +17,3 @@ app.use('/user', require('./routes/delete'));
 app.listen(3000, function () {
     console.log('Start ...');
 })
-
-
-
