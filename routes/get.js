@@ -5,6 +5,7 @@ const valid = require('../config/valid');
 
 route.get('/get_data', valid, function (req, res) {
     const file_name = req.body.file_name;
+    if (file_name.trim().length == 0) res.send('Enter file name');
     let path_file = path.resolve(__dirname + '/..' + '/users/' + file_name);
     if (fs.existsSync(path_file)) {
         let data = fs.readFileSync(path_file);
