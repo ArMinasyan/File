@@ -10,9 +10,7 @@ route.post('/login', async (req, res) => {
                 let jwt_sign = jwt.sign({
                     username: result.username,
                     id: result.id
-                }, 'test', { expiresIn: '1m' });
-
-
+                }, 'test', { expiresIn: '10m' });
                 res.cookie('token', jwt_sign, { sameSite: true, httpOnly: true });
                 res.send('Login').status(200);
             } else res.send('Incorrect password').status(500);
