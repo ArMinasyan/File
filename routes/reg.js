@@ -3,7 +3,7 @@ const user = require('../models/user');
 
 route.post('/reg', async (req, res) => {
     let data = req.body;
-    if (data.username && data.password) {
+    if (data.username.trim() !== '' && data.password.trim() !== '') {
         let user_data = await user.findOne({ username: data.username });
         if (!user_data) {
             user.insertMany({
@@ -14,7 +14,7 @@ route.post('/reg', async (req, res) => {
                     res.send('User data saved').status(200);
             })
         } else res.send('User already registered').status(200);
-    }
+    } else res.status(200).send('Enter username and/or password/')
 })
 
 

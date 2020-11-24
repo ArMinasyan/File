@@ -16,13 +16,16 @@ mongoose.connect('mongodb://localhost:27017/example', {
     useUnifiedTopology: true
 })
 
-app.use('/user', require('./routes/get'));
-app.use('/user', require('./routes/insert'));
-app.use('/user', require('./routes/update'));
-app.use('/user', require('./routes/delete'));
-app.use('/user', require('./routes/reg'));
-app.use('/user', require('./routes/login'));
-app.use('/user', require('./routes/logout'));
+
+app.use([
+    require('./routes/get'),
+    require('./routes/insert'),
+    require('./routes/update'),
+    require('./routes/delete'),
+    require('./routes/reg'),
+    require('./routes/login'),
+    require('./routes/logout')
+]);
 
 app.listen(3000, function () {
     console.log('Start ...');
